@@ -1,0 +1,54 @@
+{% extends "base.html" %} {% block main %}
+
+<h1>Contact Form</h1>
+<hr />
+<p style="font-size: medium">Fill in this form to contact the site owners.</p>
+<br />
+<form action="contact" method="post">
+  {{ form.csrf_token }}
+  <div style="display: flex; flex-direction: column; gap: 20px">
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <h5>{{ form.name.label }} <span style="color: red">(Required)</span></h5>
+      <p style="font-size: medium">Please enter your full name</p>
+      {{ form.name(**{'style': 'width: 50%; height: 40px'}) }}
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <h5>{{ form.email.label }} <span style="color: red">(Required)</span></h5>
+      <p style="font-size: medium">Please enter your e-mail name</p>
+      {{ form.email(**{'style': 'width: 50%; height: 40px'}) }}
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <h5>
+        {{ form.subject.label }} <span style="color: red">(Required)</span>
+      </h5>
+      <p style="font-size: medium">Please enter the subject of your message.</p>
+      {{ form.subject(**{'style': 'width: 50%; height: 40px'}) }}
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <h5>
+        {{ form.message.label }} <span style="color: red">(Required)</span>
+      </h5>
+      <p style="font-size: medium">
+        Please enter the message you would like to send.
+      </p>
+      {{ form.message(**{'style': 'width: 70%; height: 100px'}) }}
+    </div>
+  </div>
+  <button
+    type="submit"
+    style="
+      margin-top: 25px;
+      height: 50px;
+      width: 100px;
+      border: none;
+      background-color: #3182ce;
+      color: white;
+      border-radius: 5px;
+      font-weight: 500;
+    "
+  >
+    Send
+  </button>
+</form>
+
+{% endblock %}
